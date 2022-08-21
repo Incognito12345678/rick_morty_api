@@ -1,52 +1,6 @@
-import 'package:apirick/widgets/AppBarPage.dart';
-import 'package:apirick/widgets/api.dart';
-import 'package:flutter/material.dart';
-
-GlobalKey<_HomeRickState> homeKey = GlobalKey();
-
-class HomeRick extends StatefulWidget {
-  HomeRick({Key? key}) : super(key: key);
-
-  @override
-  State<HomeRick> createState() => _HomeRickState();
-}
-
-class _HomeRickState extends State<HomeRick> {
-  Color color = const Color.fromARGB(243, 247, 243, 243);
-
-  void changecolor() {
-    setState(() {
-      if (color == const Color.fromARGB(243, 247, 243, 243)) {
-        color = const Color.fromARGB(243, 241, 220, 237);
-      } else {
-        color = const Color.fromARGB(243, 247, 243, 243);
-      }
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const AppBarPage(),
-      body: SafeArea(
-        child: Card(
-          color: color,
-          //color: Color.fromARGB(243, 241, 220, 237),
-
-          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          child: Column(
-            children: const [
-              Expanded(child: Api()),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+/*import 'package:flutter/material.dart';
+// ignore: unused_import
+import 'package:apirick/screems/homerick.dart';
 
 class AppBarPage extends StatelessWidget implements PreferredSizeWidget {
   const AppBarPage({Key? key}) : super(key: key);
@@ -86,9 +40,7 @@ class AppBarPage extends StatelessWidget implements PreferredSizeWidget {
                     child: IconButton(
                       icon: const Icon(Icons.settings),
                       onPressed: () {
-                        //llama a la funcion cambiarcolor
-
-                        homeKey.currentState!.changecolor();
+                        
                       },
                     ),
                   ),
@@ -107,4 +59,4 @@ class AppBarPage extends StatelessWidget implements PreferredSizeWidget {
           )),
     );
   }
-}
+}*/

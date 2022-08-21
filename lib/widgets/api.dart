@@ -1,4 +1,7 @@
 import 'package:apirick/models/dataapi.dart';
+// ignore: unused_import
+import 'package:apirick/screems/details.dart';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
@@ -24,7 +27,6 @@ class _ApiState extends State<Api> {
       // If the server did return a 200 OK response,
       // then parse the JSON.
       final apidata = jsonDecode(response.body);
-      // este es un array de Strings
 
       // pasando la data a objetos DogData, recorriendo los strings y transformandolos a objeto
       return List<DataApi>.from(
@@ -68,13 +70,36 @@ class _ApiState extends State<Api> {
       ),
       itemCount: snapshot.data?.length,
       itemBuilder: (BuildContext context, int index, int realIndex) {
-        return Container(
-          margin: const EdgeInsets.all(3.0),
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(9.0)),
-            image: DecorationImage(
-              image: NetworkImage(snapshot.data![index].image),
-              fit: BoxFit.cover,
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Details(
+                  recibirdatos: snapshot.data![index],
+                ),
+              ),
+            );
+          },
+          child: Container(
+            margin: const EdgeInsets.all(3.0),
+            decoration: BoxDecoration(
+              boxShadow: const [
+                BoxShadow(
+                  color: Color.fromARGB(53, 20, 20, 20),
+                  blurRadius: 3.0, // has the effect of softening the shadow
+                  //spreadRadius: 1.0, // has the effect of extending the shadow
+                  /*offset: Offset(
+                    1.0, // horizontal, move right 10
+                    1.0, // vertical, move down 10
+                  ),*/
+                )
+              ],
+              borderRadius: const BorderRadius.all(Radius.circular(9.0)),
+              image: DecorationImage(
+                image: NetworkImage(snapshot.data![index].image),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         );
